@@ -1,0 +1,29 @@
+server:
+  port: 9090
+minio:
+  endpoint: http://192.168.3.39:9005
+  bucketName: package
+  accessKey: admin
+  secretKey: bhxz.xxh.123
+  secure: false
+spring:
+  application:
+    version: 7.0.3.0
+  servlet:
+    multipart:
+      max-request-size: 2048MB
+      location: upload_tmp
+      max-file-size: 2048MB
+knife4j:
+  enable: true
+logging:
+  pattern:
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr([%X{traceId}])  %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"
+  file:
+    path: ${user.dir}/log/minio
+  level:
+    root: error
+  logback:
+    rollingpolicy:
+      max-history: 1
+      max-file-size: 20MB
