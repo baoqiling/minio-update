@@ -5,16 +5,13 @@ import com.google.gson.GsonBuilder;
 import io.minio.BucketExistsArgs;
 import io.minio.MakeBucketArgs;
 import io.minio.MinioClient;
-import io.minio.SetBucketPolicyArgs;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.Resource;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -101,12 +98,22 @@ public class BHUtils {
         Map<String, Object> jsonMap = new HashMap<>();
         Map<String, String> textMap = new HashMap<>();
         textMap.put("content", message);
+        textMap.put("mentioned_list","[\"@all\"]");
+
+//        textMap.put("mentioned_mobile_list","[\"@all\"]");
         jsonMap.put("msgtype", "text");
         jsonMap.put("text", textMap);
+        String json = "{\n" +
+                "    \"msgtype\": \"text\",\n" +
+                "    \"text\": {\n" +
+                "        \"content\": \""+message+"\",\n" +
+                "        \"mentioned_list\":[\"@all\"],\n" +
+                "    }\n" +
+                "}";
         Gson gson = new GsonBuilder().create();
 
         String messageContent = gson.toJson(jsonMap);
-        HttpEntity<String> entity = new HttpEntity<>(messageContent, headers);
+        HttpEntity<String> entity = new HttpEntity<>(json, headers);
         ResponseEntity<String> response = restTemplate.postForEntity(webhookUrl, entity, String.class);
         return response.toString();
 

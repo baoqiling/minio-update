@@ -37,7 +37,10 @@ public class MinioController {
 
     private final MinioClient minioClient;
     private final RestTemplate restTemplate;
-    private final String webhookUrlCenter7 ="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=d5c520d6-89fd-464e-830a-17e3dd212662";
+    private final String webhookUrlCenter7 = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=608922c8-5e7c-4199-9b5e-f7e274ac8c3e";
+            // "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=608922c8-5e7c-4199-9b5e-f7e274ac8c3e";
+
+//            "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=d5c520d6-89fd-464e-830a-17e3dd212662";
 
     private final String fileNameCenter7 ="center7.txt";
     private final String propertiesCenter7 ="center7.properties";
