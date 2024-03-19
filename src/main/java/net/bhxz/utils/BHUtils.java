@@ -6,6 +6,8 @@ import io.minio.BucketExistsArgs;
 import io.minio.MakeBucketArgs;
 import io.minio.MinioClient;
 import lombok.extern.slf4j.Slf4j;
+import net.bhxz.dto.TextContent;
+import net.bhxz.dto.WeatherMessage;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -13,7 +15,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /***
@@ -95,25 +99,17 @@ public class BHUtils {
     public static String pushWebhookBotNotify(RestTemplate restTemplate, String webhookUrl, String message){
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        Map<String, Object> jsonMap = new HashMap<>();
-        Map<String, String> textMap = new HashMap<>();
-        textMap.put("content", message);
-        textMap.put("mentioned_list","[\"@all\"]");
+        // @用户名
+        List<String> mentionedList = Arrays.asList("@all");
+        // @电话号码
+        List<String> mentionedMobileList = Arrays.asList("");
+        TextContent textContent = new TextContent(message, mentionedList, mentionedMobileList);
+        WeatherMessage weatherMessage = new WeatherMessage("text", textContent);
 
-//        textMap.put("mentioned_mobile_list","[\"@all\"]");
-        jsonMap.put("msgtype", "text");
-        jsonMap.put("text", textMap);
-        String json = "{\n" +
-                "    \"msgtype\": \"text\",\n" +
-                "    \"text\": {\n" +
-                "        \"content\": \""+message+"\",\n" +
-                "        \"mentioned_list\":[\"@all\"],\n" +
-                "    }\n" +
-                "}";
         Gson gson = new GsonBuilder().create();
 
-        String messageContent = gson.toJson(jsonMap);
-        HttpEntity<String> entity = new HttpEntity<>(json, headers);
+        String messageContent = gson.toJson(weatherMessage);
+        HttpEntity<String> entity = new HttpEntity<>(messageContent, headers);
         ResponseEntity<String> response = restTemplate.postForEntity(webhookUrl, entity, String.class);
         return response.toString();
 
