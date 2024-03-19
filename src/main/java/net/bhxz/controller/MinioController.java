@@ -84,6 +84,13 @@ public class MinioController {
         } catch (IOException e) {
             log.error("未读取到配置文件信息：" + e.getMessage());
             throw new RuntimeException(e);
+        }finally {
+            try {
+                output.close();
+                input.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         File file = new File(fileUrl);
@@ -151,6 +158,13 @@ public class MinioController {
         } catch (IOException e) {
             log.error("未读取到配置文件信息：" + e.getMessage());
             throw new RuntimeException(e);
+        } finally {
+            try {
+                output.close();
+                input.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         File file = new File(fileUrl);
@@ -218,6 +232,13 @@ public class MinioController {
         } catch (IOException e) {
             log.error("未读取到配置文件信息：" + e.getMessage());
             throw new RuntimeException(e);
+        }finally {
+            try {
+                output.close();
+                input.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         File file = new File(fileUrl);
