@@ -1,0 +1,13 @@
+call curl --insecure  https://jenkins.bhxz.host/view/center6/job/admin_server/lastSuccessfulBuild/artifact/target/admin_server-6.0.0.jar --user deploy:bhxz.dev.123 -o D:\package\center6\BHWebServer\dcenter\dcenter\lib\admin_server-6.0.0.jar
+call curl --insecure  https://jenkins.bhxz.host/view/center6/job/bh5000_mysql/lastSuccessfulBuild/artifact/target/bh5000_mysql-6.0.0.jar	 --user deploy:bhxz.dev.123 -o D:\package\center6\BHWebServer\dcenter\dcenter\lib\bh5000_mysql-6.0.0.jar
+call curl --insecure  https://jenkins.bhxz.host/view/center6/job/center6_bs/lastSuccessfulBuild/artifact/target/center6_bs-6.0.0.jar --user deploy:bhxz.dev.123 -o D:\package\center6\BHWebServer\dcenter\dcenter\lib\center6_bs-6.0.0.jar
+call curl --insecure  https://jenkins.bhxz.host/view/center6/job/center6_ui/lastSuccessfulBuild/artifact/target/center6_ui-6.0.0.jar --user deploy:bhxz.dev.123 -o D:\package\center6\BHWebServer\dcenter\dcenter\lib\center6_ui-6.0.0.jar
+call curl --insecure  https://jenkins.bhxz.host/view/center6/job/center6/lastSuccessfulBuild/artifact/target/center6-6.0.0.jar --user deploy:bhxz.dev.123 -o 	D:\package\center6\BHWebServer\dcenter\dcenter\lib\center6-6.0.0.jar
+call curl --insecure  https://jenkins.bhxz.host/view/center6/job/config_server/lastSuccessfulBuild/artifact/target/config_server-6.0.0.jar --user deploy:bhxz.dev.123 -o D:\package\center6\BHWebServer\dcenter\dcenter\lib\config_server-6.0.0.jar
+call curl --insecure  https://jenkins.bhxz.host/view/center6/job/dcenter_file/lastSuccessfulBuild/artifact/target/dcenter_files-6.0.0.jar --user deploy:bhxz.dev.123 -o D:\package\center6\BHWebServer\dcenter\dcenter\lib\dcenter_files-6.0.0.jar
+call curl --insecure  https://jenkins.bhxz.host/view/center6/job/dcenter_sync/lastSuccessfulBuild/artifact/target/dcenter_sync-6.0.0.jar --user deploy:bhxz.dev.123 -o D:\package\center6\BHWebServer\dcenter\dcenter\lib\dcenter_sync-6.0.0.jar
+call curl --insecure  https://jenkins.bhxz.host/view/center6/job/dcenter_user/lastSuccessfulBuild/artifact/target/dcenter_user-6.0.0.jar --user deploy:bhxz.dev.123 -o D:\package\center6\BHWebServer\dcenter\dcenter\lib\dcenter_user-6.0.0.jar
+call curl --insecure  https://jenkins.bhxz.host/view/center6/job/gateway/lastSuccessfulBuild/artifact/target/gateway-6.0.0.jar --user deploy:bhxz.dev.123 -o 	D:\package\center6\BHWebServer\dcenter\dcenter\lib\gateway-6.0.0.jar
+call curl --insecure  https://jenkins.bhxz.host/view/center6/job/server_oauth/lastSuccessfulBuild/artifact/target/server_oauth-6.0.0.jar --user deploy:bhxz.dev.123 -o 	D:\package\center6\BHWebServer\dcenter\dcenter\lib\server_oauth-6.0.0.jar
+echo "success"
+exit
